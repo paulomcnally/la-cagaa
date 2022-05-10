@@ -11,4 +11,4 @@ jobs:
         uses: tj-actions/branch-names@v5.2
       - name: Running on the default branch
         if: "steps.branch-name.outputs.head_ref_branch == 'develop'"
-        run: echo "No es permitido unir la rama develop a la rama staging"
+        run: echo "No es permitido unir la rama develop a la rama staging" && exit 1
