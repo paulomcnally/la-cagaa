@@ -1,0 +1,17 @@
+name: Staging merge rules
+on:
+  pull_request:
+    branches: [staging]
+jobs:
+  staging_merge_rules:
+    runs-on: ubuntu-18.04
+    steps: 
+      - name: Get branch name
+        id: branch-name
+        uses: tj-actions/branch-names@v5.2
+      - name: Check from develop
+        if: "steps.branch-name.outputs.head_ref_branch == 'develop'"
+        run: echo "No es permitido unir la rama develop a la rama staging" && exit 1
+      - name: Check from master
+        if: "steps.branch-name.outputs.head_ref_branch == 'master'"
+        run: echo "No es permitido unir la rama master a la rama staging" && exit 1
