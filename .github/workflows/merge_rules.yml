@@ -1,4 +1,7 @@
---- 
+name: Merge rules
+on:
+  pull_request:
+    branches: [ staging ] 
 jobs: 
   runs-on: ubuntu-18.04
   steps: 
@@ -9,9 +12,4 @@ jobs:
     - 
       if: "steps.branch-name.outputs.head_ref_branch == 'develop'"
       name: "Running on the default branch."
-      run: "echo \"No es permitido unir la rama develop a la rama staging\""
-name: "Merge rules"
-true: 
-  pull_request: 
-    branches: 
-      - staging
+      run: echo "No es permitido unir la rama develop a la rama staging"
